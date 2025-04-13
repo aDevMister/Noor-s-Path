@@ -1,12 +1,48 @@
-"use client"
+"use client";
 
-import { useEffect, useRef } from "react"
-import Image from "next/image"
-import Link from "next/link"
-import { motion, useInView, useAnimation } from "framer-motion"
-import { ArrowRight, Heart, BookOpen, Users, ArrowUpRight } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
+import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { motion, useInView, useAnimation } from "framer-motion";
+import {
+  ArrowRight,
+  Heart,
+  BookOpen,
+  Users,
+  ArrowUpRight,
+  ChevronLeft,
+  ChevronRight,
+} from "lucide-react";
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+
+// const heroImages = ["/IMG_0495.jpg", "/IMG_0492_jpg.jpg", "/IMG_0491.jpg"];
+
+const heroImages = [
+  {
+    src: "/IMG_0492_jpg.jpg",
+    caption: "Creating a safe and supportive environment.",
+  },
+  {
+    src: "/IMG_0493.jpg",
+    caption: "Creating a safe and supportive environment.",
+  },
+  {
+    src: "/IMG_0491.jpg",
+    caption: "Every child deserves a brighter future.",
+  },
+  {
+    src: "/IMG_0495.jpg",
+    caption: "Empowering young minds through education.",
+  },
+];
 
 export default function Home() {
   return (
@@ -19,55 +55,123 @@ export default function Home() {
       <NewsSection />
       <CtaSection />
     </>
-  )
+  );
 }
 
 function HeroSection() {
+  const [currentImage, setCurrentImage] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImage((prev) => (prev + 1) % heroImages.length);
+    }, 6000); // Auto change every 6 seconds
+    return () => clearInterval(interval);
+  }, []);
+
+  const handlePrev = () => {
+    setCurrentImage(
+      (prev) => (prev - 1 + heroImages.length) % heroImages.length
+    );
+  };
+
+  const handleNext = () => {
+    setCurrentImage((prev) => (prev + 1) % heroImages.length);
+  };
   return (
     <section className="pt-32 pb-16 md:pt-40 md:pb-24 overflow-hidden relative bg-gradient-to-b from-primary-50 to-white dark:from-gray-900 dark:to-gray-950 w-full">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          {/* Left: Text */}
           <div className="fade-in">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-6 break-words">
-              Lighting the Path for <span className="text-primary-600 dark:text-primary-400">Every Child</span>
+              Lighting the Path for{" "}
+              <span className="text-primary-600 dark:text-primary-400">
+                Every Child
+              </span>
             </h1>
             <p className="text-lg md:text-xl text-gray-700 dark:text-gray-300 mb-8">
-              We provide quality education, healthcare, and a supportive community for orphans and less privileged
-              children to help them reach their full potential.
+              We provide quality education, healthcare, and a supportive
+              community for orphans and less privileged children to help them
+              reach their full potential.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Button asChild size="lg" className="rounded-full">
                 <Link href="/donate">Donate Now</Link>
               </Button>
-              <Button asChild size="lg" variant="outline" className="rounded-full">
+              <Button
+                asChild
+                size="lg"
+                variant="outline"
+                className="rounded-full"
+              >
                 <Link href="/get-involved">
                   Get Involved <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </Button>
             </div>
           </div>
-          <div className="relative hero-animation">
-            <div className="relative h-[400px] w-full">
-              <Image src="/hero-image.svg" alt="Children learning together" fill className="object-contain" />
-            </div>
+
+          {/* Right: Carousel */}
+          <div className="relative h-[400px] w-full flex items-center justify-center rounded-2xl bg-white dark:bg-gray-900 shadow-lg overflow-hidden p-4">
+            {heroImages.map((item, index) => (
+              <div
+                key={index}
+                className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+                  index === currentImage ? "opacity-100 z-10" : "opacity-0 z-0"
+                } flex flex-col items-center justify-center`}
+              >
+                <Image
+                  src={item.src}
+                  alt={`Hero image ${index + 1}`}
+                  fill
+                  className="object-contain rounded-xl"
+                  priority={index === 0}
+                />
+
+                {/* Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/20 to-transparent rounded-xl pointer-events-none" />
+
+                {/* Caption */}
+                {/*  <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 text-center z-20 text-white bg-black/50 px-4 py-2 rounded-full text-sm md:text-base">
+                {item.caption}
+              </div> */}
+              </div>
+            ))}
+
+            {/* Controls */}
+            <button
+              onClick={handlePrev}
+              className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/40 text-white p-2 rounded-full hover:bg-black/60 z-30"
+              aria-label="Previous Image"
+            >
+              <ChevronLeft className="w-5 h-5" />
+            </button>
+            <button
+              onClick={handleNext}
+              className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/40 text-white p-2 rounded-full hover:bg-black/60 z-30"
+              aria-label="Next Image"
+            >
+              <ChevronRight className="w-5 h-5" />
+            </button>
           </div>
         </div>
       </div>
+
       <div className="absolute bottom-0 left-0 w-full h-16 bg-wave-pattern bg-repeat-x bg-contain"></div>
     </section>
-  )
+  );
 }
 
 function MissionSection() {
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, amount: 0.3 })
-  const controls = useAnimation()
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, amount: 0.3 });
+  const controls = useAnimation();
 
   useEffect(() => {
     if (isInView) {
-      controls.start("visible")
+      controls.start("visible");
     }
-  }, [isInView, controls])
+  }, [isInView, controls]);
 
   return (
     <section ref={ref} className="py-16 md:py-24 bg-white dark:bg-gray-950">
@@ -82,11 +186,13 @@ function MissionSection() {
           transition={{ duration: 0.5 }}
           className="text-center mb-12"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">Our Mission</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+            Our Mission
+          </h2>
           <div className="w-20 h-1 bg-primary-500 mx-auto mb-6"></div>
           <p className="text-lg text-gray-700 dark:text-gray-300 max-w-3xl mx-auto">
-            We are dedicated to creating a brighter future for children in need through education, healthcare, and
-            community support.
+            We are dedicated to creating a brighter future for children in need
+            through education, healthcare, and community support.
           </p>
         </motion.div>
 
@@ -109,7 +215,8 @@ function MissionSection() {
               </CardHeader>
               <CardContent>
                 <p className="text-gray-600 dark:text-gray-400">
-                  Providing quality education and learning resources to orphans and less privileged children.
+                  Providing quality education and learning resources to orphans
+                  and less privileged children.
                 </p>
               </CardContent>
             </Card>
@@ -133,7 +240,8 @@ function MissionSection() {
               </CardHeader>
               <CardContent>
                 <p className="text-gray-600 dark:text-gray-400">
-                  Ensuring children have access to essential healthcare services and medical support.
+                  Ensuring children have access to essential healthcare services
+                  and medical support.
                 </p>
               </CardContent>
             </Card>
@@ -157,7 +265,8 @@ function MissionSection() {
               </CardHeader>
               <CardContent>
                 <p className="text-gray-600 dark:text-gray-400">
-                  Fostering a supportive community for the holistic development of children.
+                  Fostering a supportive community for the holistic development
+                  of children.
                 </p>
               </CardContent>
             </Card>
@@ -165,29 +274,32 @@ function MissionSection() {
         </div>
       </div>
     </section>
-  )
+  );
 }
 
 function ImpactSection() {
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, amount: 0.3 })
-  const controls = useAnimation()
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, amount: 0.3 });
+  const controls = useAnimation();
 
   useEffect(() => {
     if (isInView) {
-      controls.start("visible")
+      controls.start("visible");
     }
-  }, [isInView, controls])
+  }, [isInView, controls]);
 
   const stats = [
     { value: "500+", label: "Children Supported" },
     { value: "15+", label: "Schools Built" },
     { value: "25+", label: "Communities Reached" },
     { value: "10+", label: "Years of Service" },
-  ]
+  ];
 
   return (
-    <section ref={ref} className="py-16 md:py-24 bg-primary-50 dark:bg-gray-900 wave-bg">
+    <section
+      ref={ref}
+      className="py-16 md:py-24 bg-primary-50 dark:bg-gray-900 wave-bg"
+    >
       <div className="container mx-auto px-4">
         <motion.div
           variants={{
@@ -199,10 +311,13 @@ function ImpactSection() {
           transition={{ duration: 0.5 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">Our Impact</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+            Our Impact
+          </h2>
           <div className="w-20 h-1 bg-primary-500 mx-auto mb-6"></div>
           <p className="text-lg text-gray-700 dark:text-gray-300 max-w-3xl mx-auto">
-            Together, we've made a significant difference in the lives of children across communities.
+            Together, we've made a significant difference in the lives of
+            children across communities.
           </p>
         </motion.div>
 
@@ -230,40 +345,43 @@ function ImpactSection() {
         </div>
       </div>
     </section>
-  )
+  );
 }
 
 function ProgramsSection() {
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, amount: 0.3 })
-  const controls = useAnimation()
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, amount: 0.3 });
+  const controls = useAnimation();
 
   useEffect(() => {
     if (isInView) {
-      controls.start("visible")
+      controls.start("visible");
     }
-  }, [isInView, controls])
+  }, [isInView, controls]);
 
   const programs = [
     {
       title: "Education Support",
-      description: "Providing school supplies, scholarships, and educational resources to children in need.",
+      description:
+        "Providing school supplies, scholarships, and educational resources to children in need.",
       image: "/program-education.svg",
       link: "/outreach#education",
     },
     {
       title: "Healthcare Initiatives",
-      description: "Ensuring access to medical care, nutrition programs, and health education.",
+      description:
+        "Ensuring access to medical care, nutrition programs, and health education.",
       image: "/program-healthcare.svg",
       link: "/outreach#healthcare",
     },
     {
       title: "Community Development",
-      description: "Building schools, community centers, and infrastructure to support children's growth.",
+      description:
+        "Building schools, community centers, and infrastructure to support children's growth.",
       image: "/program-community.svg",
       link: "/outreach#community",
     },
-  ]
+  ];
 
   return (
     <section ref={ref} className="py-16 md:py-24 bg-white dark:bg-gray-950">
@@ -278,10 +396,13 @@ function ProgramsSection() {
           transition={{ duration: 0.5 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">Our Programs</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+            Our Programs
+          </h2>
           <div className="w-20 h-1 bg-primary-500 mx-auto mb-6"></div>
           <p className="text-lg text-gray-700 dark:text-gray-300 max-w-3xl mx-auto">
-            Discover the various ways we're making a difference in children's lives.
+            Discover the various ways we're making a difference in children's
+            lives.
           </p>
         </motion.div>
 
@@ -300,7 +421,9 @@ function ProgramsSection() {
               <Card className="h-full overflow-hidden border-none shadow-lg hover:shadow-xl transition-all">
                 <div className="relative h-48 w-full">
                   <Image
-                    src={program.image || "/placeholder.svg?height=192&width=384"}
+                    src={
+                      program.image || "/placeholder.svg?height=192&width=384"
+                    }
                     alt={program.title}
                     fill
                     className="object-cover"
@@ -310,12 +433,15 @@ function ProgramsSection() {
                   <CardTitle>{program.title}</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-gray-600 dark:text-gray-400">{program.description}</p>
+                  <p className="text-gray-600 dark:text-gray-400">
+                    {program.description}
+                  </p>
                 </CardContent>
                 <CardFooter>
                   <Button asChild variant="ghost" className="group">
                     <Link href={program.link}>
-                      Learn more <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                      Learn more{" "}
+                      <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                     </Link>
                   </Button>
                 </CardFooter>
@@ -325,19 +451,19 @@ function ProgramsSection() {
         </div>
       </div>
     </section>
-  )
+  );
 }
 
 function TestimonialsSection() {
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, amount: 0.3 })
-  const controls = useAnimation()
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, amount: 0.3 });
+  const controls = useAnimation();
 
   useEffect(() => {
     if (isInView) {
-      controls.start("visible")
+      controls.start("visible");
     }
-  }, [isInView, controls])
+  }, [isInView, controls]);
 
   const testimonials = [
     {
@@ -358,7 +484,7 @@ function TestimonialsSection() {
       name: "Sarah",
       role: "Volunteer",
     },
-  ]
+  ];
 
   return (
     <section ref={ref} className="py-16 md:py-24 bg-primary-700 text-white">
@@ -373,10 +499,13 @@ function TestimonialsSection() {
           transition={{ duration: 0.5 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Voices of Impact</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+            Voices of Impact
+          </h2>
           <div className="w-20 h-1 bg-primary-300 mx-auto mb-6"></div>
           <p className="text-lg text-primary-100 max-w-3xl mx-auto">
-            Hear from the children, communities, and volunteers whose lives have been touched by our work.
+            Hear from the children, communities, and volunteers whose lives have
+            been touched by our work.
           </p>
         </motion.div>
 
@@ -399,7 +528,9 @@ function TestimonialsSection() {
                 <CardContent>
                   <p className="text-primary-100 mb-6">{testimonial.quote}</p>
                   <div>
-                    <p className="font-semibold text-white">{testimonial.name}</p>
+                    <p className="font-semibold text-white">
+                      {testimonial.name}
+                    </p>
                     <p className="text-primary-300">{testimonial.role}</p>
                   </div>
                 </CardContent>
@@ -409,19 +540,19 @@ function TestimonialsSection() {
         </div>
       </div>
     </section>
-  )
+  );
 }
 
 function NewsSection() {
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, amount: 0.3 })
-  const controls = useAnimation()
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, amount: 0.3 });
+  const controls = useAnimation();
 
   useEffect(() => {
     if (isInView) {
-      controls.start("visible")
+      controls.start("visible");
     }
-  }, [isInView, controls])
+  }, [isInView, controls]);
 
   const news = [
     {
@@ -448,7 +579,7 @@ function NewsSection() {
       image: "/news-3.svg",
       link: "/news/healthcare-program-expands-to-new-region",
     },
-  ]
+  ];
 
   return (
     <section ref={ref} className="py-16 md:py-24 bg-gray-50 dark:bg-gray-900">
@@ -463,7 +594,9 @@ function NewsSection() {
           transition={{ duration: 0.5 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">News & Updates</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+            News & Updates
+          </h2>
           <div className="w-20 h-1 bg-primary-500 mx-auto mb-6"></div>
           <p className="text-lg text-gray-700 dark:text-gray-300 max-w-3xl mx-auto">
             Stay up to date with our latest news, events, and success stories.
@@ -496,12 +629,15 @@ function NewsSection() {
                   <CardTitle className="text-xl">{item.title}</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-gray-600 dark:text-gray-400">{item.excerpt}</p>
+                  <p className="text-gray-600 dark:text-gray-400">
+                    {item.excerpt}
+                  </p>
                 </CardContent>
                 <CardFooter>
                   <Button asChild variant="ghost" className="group">
                     <Link href={item.link}>
-                      Read more <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                      Read more{" "}
+                      <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                     </Link>
                   </Button>
                 </CardFooter>
@@ -519,7 +655,7 @@ function NewsSection() {
         </div>
       </div>
     </section>
-  )
+  );
 }
 
 function CtaSection() {
@@ -527,13 +663,20 @@ function CtaSection() {
     <section className="py-16 md:py-24 bg-primary-600 text-white">
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">Join Us in Making a Difference</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-6">
+            Join Us in Making a Difference
+          </h2>
           <p className="text-lg text-primary-100 mb-8 max-w-2xl mx-auto">
-            Whether through donations, volunteering, or partnerships, your support helps us create a brighter future for
-            children in need.
+            Whether through donations, volunteering, or partnerships, your
+            support helps us create a brighter future for children in need.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button asChild size="lg" variant="secondary" className="rounded-full">
+            <Button
+              asChild
+              size="lg"
+              variant="secondary"
+              className="rounded-full"
+            >
               <Link href="/donate">Donate Now</Link>
             </Button>
             <Button
@@ -550,5 +693,5 @@ function CtaSection() {
         </div>
       </div>
     </section>
-  )
+  );
 }
