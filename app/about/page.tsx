@@ -2,7 +2,12 @@
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import { motion, useInView, useAnimation, AnimatePresence } from "framer-motion";
+import {
+  motion,
+  useInView,
+  useAnimation,
+  AnimatePresence,
+} from "framer-motion";
 import { Award, Heart, Lightbulb, Target } from "lucide-react";
 
 export default function AboutPage() {
@@ -43,7 +48,6 @@ function StorySection() {
   const isInView = useInView(ref, { once: true, amount: 0.3 });
   const controls = useAnimation();
   const [showFull, setShowFull] = useState(false);
-
 
   useEffect(() => {
     if (isInView) {
@@ -86,21 +90,23 @@ function StorySection() {
             className="w-full"
           >
             <div className="lg:mt-0 md:mt-0 mt-8">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6">
-              Our Story
-            </h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6">
+                Our Story
+              </h2>
             </div>
-            <div className="w-20 h-1 bg-primary-500 mb-6"/>
+            <div className="w-20 h-1 bg-primary-500 mb-6" />
 
             <div className="space-y-4 text-gray-700 dark:text-gray-300 text-base md:text-lg">
               <p className="font-semibold text-lg">
-                Welcome to <span className="font-bold">NOOR&apos;S PATH</span> —
-                where compassion finds purpose, and purpose becomes action.
+                Welcome to <span className="font-bold">NOOR&apos;S PATH</span> — {""}
+                <span className="italic text-primary-600 text-lg font-medium mb-4">
+                  a light for the children
+                </span>
               </p>
 
               <p>
-                Founded in <strong>July 2024</strong>, NOOR&apos;S PATH was born from
-                a deep desire to create a world where{" "}
+                Founded in <strong>July 2024</strong>, NOOR&apos;S PATH was born
+                from a deep desire to create a world where{" "}
                 <em>orphans and underprivileged children</em> are not burdened
                 by circumstances beyond their control.
               </p>
@@ -165,8 +171,8 @@ function StorySection() {
                       <li>
                         <strong>Provision of Essentials & Joy</strong> – From
                         clothing and food to toys and games, we deliver both
-                        necessities and delights — because a child&apos;s well-being
-                        includes both survival and smiles.
+                        necessities and delights — because a child&apos;s
+                        well-being includes both survival and smiles.
                       </li>
                     </ul>
 
@@ -179,8 +185,8 @@ function StorySection() {
                     </p>
 
                     <p className="font-semibold">
-                      At NOOR&apos;S PATH, we walk hand in hand with the future — one
-                      child, one act of kindness at a time.
+                      At NOOR&apos;S PATH, we walk hand in hand with the future
+                      — one child, one act of kindness at a time.
                     </p>
 
                     <p className="text-lg font-bold">
