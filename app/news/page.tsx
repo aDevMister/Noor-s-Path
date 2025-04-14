@@ -86,7 +86,7 @@ function NewsSection() {
       author: "Admin",
       excerpt:
         "We're thrilled to announce a new partnership with Global Tech Solutions to provide technology education to underserved communities.",
-      image: "/news-4.svg",
+      image: "/news-1.svg",
       category: "Partnerships",
     },
     {
@@ -95,7 +95,7 @@ function NewsSection() {
       author: "Admin",
       excerpt:
         "Join us in celebrating the outstanding contributions of our volunteers at the annual Volunteer of the Year Award Ceremony.",
-      image: "/news-5.svg",
+      image: "/news-3.svg",
       category: "Events",
     },
     {
@@ -104,7 +104,7 @@ function NewsSection() {
       author: "Admin",
       excerpt:
         "Noor's Path launches a new community development initiative focused on sustainable infrastructure and economic opportunities.",
-      image: "/news-6.svg",
+      image: "/news-1.svg",
       category: "Community",
     },
   ]

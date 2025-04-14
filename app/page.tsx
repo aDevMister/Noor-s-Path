@@ -23,15 +23,21 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 
-// const heroImages = ["/IMG_0495.jpg", "/IMG_0492_jpg.jpg", "/IMG_0491.jpg"];
-
 const heroImages = [
   {
     src: "/IMG_0492_jpg.jpg",
     caption: "Creating a safe and supportive environment.",
   },
   {
-    src: "/IMG_0493.jpg",
+    src: "/IMG_0541.jpg",
+    caption: "Creating a safe and supportive environment.",
+  },
+  {
+    src: "/IMG_3984.jpg",
+    caption: "Creating a safe and supportive environment.",
+  },
+  {
+    src: "/IMG_4033.jpg",
     caption: "Creating a safe and supportive environment.",
   },
   {
@@ -112,7 +118,7 @@ function HeroSection() {
           </div>
 
           {/* Right: Carousel */}
-          <div className="relative h-[400px] w-full flex items-center justify-center rounded-2xl bg-white dark:bg-gray-900 shadow-lg overflow-hidden p-4">
+          <div className="relative h-[400px] w-full flex items-center justify-center rounded-2xl  overflow-hidden p-4">
             {heroImages.map((item, index) => (
               <div
                 key={index}
@@ -127,14 +133,6 @@ function HeroSection() {
                   className="object-contain rounded-xl"
                   priority={index === 0}
                 />
-
-                {/* Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/20 to-transparent rounded-xl pointer-events-none" />
-
-                {/* Caption */}
-                {/*  <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 text-center z-20 text-white bg-black/50 px-4 py-2 rounded-full text-sm md:text-base">
-                {item.caption}
-              </div> */}
               </div>
             ))}
 

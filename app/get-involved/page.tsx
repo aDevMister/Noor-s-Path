@@ -55,25 +55,26 @@ function VolunteerSection() {
       title: "Education Mentor",
       description: "Work directly with children to support their educational journey through tutoring and mentorship.",
       commitment: "4-6 hours per week",
-      image: "/volunteer-education.svg",
+      image: "/IMG_4013.jpg",
     },
     {
       title: "Healthcare Assistant",
       description: "Support our healthcare initiatives by assisting with medical camps, health education, and more.",
       commitment: "6-8 hours per week",
-      image: "/volunteer-healthcare.svg",
+      image: "/IMG_0536.jpg",
     },
     {
       title: "Event Coordinator",
       description: "Help plan and execute fundraising events, awareness campaigns, and community activities.",
       commitment: "Varies by event",
-      image: "/volunteer-event.svg",
+      image: "/IMG_6799.jpg",
     },
     {
       title: "Administrative Support",
       description: "Assist with office tasks, data management, communications, and other administrative needs.",
       commitment: "4-10 hours per week",
-      image: "/volunteer-admin.svg",
+      image: "/IMG_6780.jpg",
+
     },
   ]
 
@@ -180,23 +181,16 @@ function EventsSection() {
       time: "6:00 PM - 10:00 PM",
       location: "Grand Ballroom, City Center",
       description: "Join us for an evening of celebration and fundraising to support our educational initiatives.",
-      image: "/event-gala.svg",
+      image: "/IMG_0536.jpg",
     },
-    {
-      title: "Community Health Fair",
-      date: "October 8, 2023",
-      time: "10:00 AM - 4:00 PM",
-      location: "Central Park",
-      description: "A day of free health screenings, education, and activities for families in our community.",
-      image: "/event-health.svg",
-    },
+  
     {
       title: "Volunteer Training Workshop",
       date: "August 20, 2023",
       time: "9:00 AM - 12:00 PM",
       location: "Noor's Path Headquarters",
       description: "Learn about our programs and how you can effectively contribute as a volunteer.",
-      image: "/event-training.svg",
+      image: "/IMG_3997.jpg",
     },
   ]
 
@@ -351,7 +345,7 @@ function PartnershipSection() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="relative h-[400px] w-full rounded-2xl overflow-hidden"
           >
-            <Image src="/partnership.svg" alt="Corporate Partnership" fill className="object-cover" />
+            <Image src="/IMG_4013.jpg" alt="Corporate Partnership" fill className="object-cover" />
           </motion.div>
         </div>
       </div>

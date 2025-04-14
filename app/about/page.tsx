@@ -325,24 +325,24 @@ function TeamSection() {
 
   const teamMembers = [
     {
-      name: "Noor Ahmed",
+      name: "Muzeenat Imam",
       role: "Founder & Executive Director",
-      image: "/team-1.svg",
+      image: "/IMG_0588.jpg",
     },
     {
-      name: "Sarah Johnson",
+      name: "Aisha Ayomide",
       role: "Education Program Director",
-      image: "/team-2.svg",
+      image: "/IMG_0601.jpg",
     },
     {
       name: "Mohammed Ali",
       role: "Healthcare Initiatives Lead",
-      image: "/team-3.svg",
+      image: "/IMG_6794.jpg",
     },
     {
-      name: "David Chen",
+      name: "Medinat Imam",
       role: "Community Outreach Coordinator",
-      image: "/team-4.svg",
+      image: "/IMG_0589.jpg",
     },
   ];
 

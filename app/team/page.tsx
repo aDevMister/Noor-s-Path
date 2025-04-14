@@ -52,28 +52,28 @@ function LeadershipSection() {
 
   const leadershipTeam = [
     {
-      name: "Noor Ahmed",
+      name: "Muzeenat Imam",
       role: "Founder & Executive Director",
       bio: "Noor founded the organization in 2010 with a vision to provide quality education and healthcare to orphans and underprivileged children.",
-      image: "/team-1.svg",
+      image: "/IMG_0588.jpg",
     },
     {
-      name: "Sarah Johnson",
+      name: "Medinat Imam",
       role: "Chief Operations Officer",
       bio: "Sarah oversees the day-to-day operations and ensures that our programs are running efficiently and effectively.",
-      image: "/team-2.svg",
+      image: "/IMG_0589.jpg",
     },
     {
       name: "Mohammed Ali",
       role: "Director of Programs",
       bio: "Mohammed develops and implements our educational and healthcare programs, ensuring they meet the needs of the children we serve.",
-      image: "/team-3.svg",
+      image: "/IMG_4049.jpg",
     },
     {
       name: "Amina Hassan",
       role: "Director of Development",
       bio: "Amina leads our fundraising efforts and builds relationships with donors and partners to support our mission.",
-      image: "/team-4.svg",
+      image: "/IMG_6788.jpg",
     },
   ]
 
@@ -163,32 +163,32 @@ function StaffSection() {
     {
       name: "David Chen",
       role: "Education Program Manager",
-      image: "/staff-1.svg",
+      image: "/IMG_0593.jpg",
     },
     {
       name: "Fatima Zahra",
       role: "Healthcare Coordinator",
-      image: "/staff-2.svg",
+      image: "/IMG_6792.jpg",
     },
     {
       name: "John Doe",
       role: "Community Outreach Specialist",
-      image: "/staff-3.svg",
+      image: "/IMG_6788.jpg",
     },
     {
       name: "Aisha Patel",
       role: "Volunteer Coordinator",
-      image: "/staff-4.svg",
+      image: "/IMG_0601.jpg",
     },
     {
       name: "Michael Smith",
       role: "Finance Manager",
-      image: "/staff-5.svg",
+      image: "/IMG_0581.jpg",
     },
     {
       name: "Leila Abdi",
       role: "Communications Specialist",
-      image: "/staff-6.svg",
+      image: "/IMG_6788.jpg",
     },
   ]
 
@@ -259,25 +259,25 @@ function BoardSection() {
       name: "Dr. Samira Khan",
       role: "Board Chair",
       bio: "Dr. Khan is a renowned pediatrician with over 20 years of experience in children's healthcare.",
-      image: "/board-1.svg",
+      image: "/IMG_0588.jpg",
     },
     {
       name: "Robert Williams",
       role: "Treasurer",
       bio: "Robert brings 15 years of financial expertise from his career in investment banking.",
-      image: "/board-2.svg",
+      image: "/IMG_0605.jpg",
     },
     {
       name: "Elena Rodriguez",
       role: "Secretary",
       bio: "Elena is an education policy expert who has worked with multiple international organizations.",
-      image: "/board-3.svg",
+      image: "/IMG_6794.jpg",
     },
     {
       name: "Hassan Ibrahim",
       role: "Board Member",
       bio: "Hassan is a community leader with deep connections to the regions we serve.",
-      image: "/board-4.svg",
+      image: "/IMG_0589.jpg",
     },
   ]
 

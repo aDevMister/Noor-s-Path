@@ -18,7 +18,7 @@ export default function DonatePage() {
     <>
       <HeroSection />
       <DonationOptionsSection />
-      <ImpactSection />
+      {/* <ImpactSection /> */}
       <CorporateSection />
       <FaqSection />
     </>
@@ -374,7 +374,7 @@ function CorporateSection() {
             transition={{ duration: 0.6 }}
             className="relative h-[400px] w-full rounded-2xl overflow-hidden"
           >
-            <Image src="/corporate-giving.svg" alt="Corporate Giving" fill className="object-cover" />
+            <Image src="/IMG_4032.jpg" alt="Corporate Giving" fill className="object-cover" />
           </motion.div>
 
           <motion.div

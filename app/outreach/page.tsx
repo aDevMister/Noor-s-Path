@@ -13,9 +13,9 @@ export default function OutreachPage() {
     <>
       <HeroSection />
       <GallerySection />
-      <OutreachStoriesSection />
+      {/* <OutreachStoriesSection /> */}
       <ImpactSection />
-      <UpcomingSection />
+      {/* <UpcomingSection /> */}
     </>
   )
 }
@@ -51,12 +51,11 @@ function GallerySection() {
   const [activeTab, setActiveTab] = useState("photos")
 
   const photos = [
-    { src: "/gallery-1.svg", alt: "Children in classroom", caption: "New school opening in rural community" },
-    { src: "/gallery-2.svg", alt: "Healthcare checkup", caption: "Medical camp providing free healthcare" },
-    { src: "/gallery-3.svg", alt: "Community gathering", caption: "Community development workshop" },
-    { src: "/gallery-4.svg", alt: "Children playing", caption: "Recreational activities for children" },
-    { src: "/gallery-5.svg", alt: "Education session", caption: "Teacher training program" },
-    { src: "/gallery-6.svg", alt: "Donation drive", caption: "Annual donation drive for school supplies" },
+    { src: "/IMG_3984.jpg", alt: "Children in classroom", caption: "New school opening in rural community" },
+    { src: "/IMG_4013.jpg", alt: "Education session", caption: "Teacher training program" },
+    { src: "/IMG_4039.jpg", alt: "Community gathering", caption: "Community development workshop" },
+    { src: "/IMG_3982.jpg", alt: "Children playing", caption: "Recreational activities for children" },
+    { src: "/IMG_0789.jpg", alt: "Donation drive", caption: "Annual donation drive for school supplies" },
   ]
 
   const videos = [

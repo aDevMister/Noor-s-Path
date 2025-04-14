@@ -16,9 +16,9 @@ export default function PartnershipsPage() {
     <>
       <HeroSection />
       <PartnershipTypesSection />
-      <CurrentPartnersSection />
-      <BenefitsSection />
-      <TestimonialsSection />
+      {/* <CurrentPartnersSection /> */}
+      {/* <BenefitsSection /> */}
+      {/* <TestimonialsSection /> */}
       <ContactSection />
     </>
   )
