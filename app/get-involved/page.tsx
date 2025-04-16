@@ -55,7 +55,7 @@ function VolunteerSection() {
       title: "Education Mentor",
       description: "Work directly with children to support their educational journey through tutoring and mentorship.",
       commitment: "4-6 hours per week",
-      image: "/IMG_4013.jpg",
+      image: "/IMG_4013.JPG",
     },
     {
       title: "Healthcare Assistant",
@@ -345,7 +345,7 @@ function PartnershipSection() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="relative h-[400px] w-full rounded-2xl overflow-hidden"
           >
-            <Image src="/IMG_4013.jpg" alt="Corporate Partnership" fill className="object-cover" />
+            <Image src="/IMG_4013.JPG" alt="Corporate Partnership" fill className="object-cover" />
           </motion.div>
         </div>
       </div>

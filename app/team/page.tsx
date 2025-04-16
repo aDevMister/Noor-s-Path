@@ -67,7 +67,7 @@ function LeadershipSection() {
       name: "Mohammed Ali",
       role: "Director of Programs",
       bio: "Mohammed develops and implements our educational and healthcare programs, ensuring they meet the needs of the children we serve.",
-      image: "/IMG_4049.jpg",
+      image: "/IMG_4049.JPG",
     },
     {
       name: "Amina Hassan",
