@@ -57,7 +57,7 @@ export default function NavbarWithCarousel() {
     const nextSlide = () => {
       setCurrent((prev) => (prev + 1) % slides.length);
     };
-    timeoutRef.current = setTimeout(nextSlide, 8000);
+    timeoutRef.current = setTimeout(nextSlide, 6000);
     return () => clearTimeout(timeoutRef.current);
   }, [current]);
 
@@ -172,8 +172,11 @@ export default function NavbarWithCarousel() {
               src={slide.image}
               alt={slide.title}
               fill
+              priority={index === 0}
+              loading={index === 0 ? "eager" : "lazy"}
               className="object-cover w-full h-full z-0"
             />
+
             <div className="absolute inset-0 bg-black/50 flex flex-col items-center justify-center text-white text-center p-4">
               <h2 className="text-4xl font-bold mb-4 animate-fadeInUp">
                 {slide.title}

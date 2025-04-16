@@ -14,7 +14,7 @@ export default function Footer() {
                   alt="Noor's Path Logo"
                   width={60}
                   height={60}
-                  className="mr-3 bg-white rounded-full p-1"
+                  className="mr-3 "
                 />
                 <h3 className="text-xl font-bold">Noor's Path</h3>
               </div>
