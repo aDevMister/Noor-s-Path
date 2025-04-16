@@ -10,7 +10,7 @@ export default function Footer() {
             <div>
               <div className="flex items-center mb-6">
                 <Image
-                  src="/placeholder.svg?height=60&width=60"
+                  src="/logoo.png"
                   alt="Noor's Path Logo"
                   width={60}
                   height={60}

@@ -10,8 +10,6 @@ import {
   BookOpen,
   Users,
   ArrowUpRight,
-  ChevronLeft,
-  ChevronRight,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -53,7 +51,6 @@ const heroImages = [
 export default function Home() {
   return (
     <>
-      {/* <HeroSection /> */}
       <MissionSection />
       <ImpactSection />
       <ProgramsSection />
@@ -63,102 +60,6 @@ export default function Home() {
     </>
   );
 }
-
-// function HeroSection() {
-//   const [currentImage, setCurrentImage] = useState(0);
-
-//   useEffect(() => {
-//     const interval = setInterval(() => {
-//       setCurrentImage((prev) => (prev + 1) % heroImages.length);
-//     }, 6000); // Auto change every 6 seconds
-//     return () => clearInterval(interval);
-//   }, []);
-
-//   const handlePrev = () => {
-//     setCurrentImage(
-//       (prev) => (prev - 1 + heroImages.length) % heroImages.length
-//     );
-//   };
-
-//   const handleNext = () => {
-//     setCurrentImage((prev) => (prev + 1) % heroImages.length);
-//   };
-//   return (
-//     <section className="pt-32 pb-16 md:pt-40 md:pb-24 overflow-hidden relative bg-gradient-to-b from-primary-50 to-white dark:from-gray-900 dark:to-gray-950 w-full">
-//       <div className="container mx-auto px-4">
-//         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-//           {/* Left: Text */}
-//           <div className="fade-in">
-//             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-6 break-words">
-//               Lighting the Path for{" "}
-//               <span className="text-primary-600 dark:text-primary-400">
-//                 Every Child
-//               </span>
-//             </h1>
-//             <p className="text-lg md:text-xl text-gray-700 dark:text-gray-300 mb-8">
-//               We provide quality education, healthcare, and a supportive
-//               community for orphans and less privileged children to help them
-//               reach their full potential.
-//             </p>
-//             <div className="flex flex-col sm:flex-row gap-4">
-//               <Button asChild size="lg" className="rounded-full">
-//                 <Link href="/donate">Donate Now</Link>
-//               </Button>
-//               <Button
-//                 asChild
-//                 size="lg"
-//                 variant="outline"
-//                 className="rounded-full"
-//               >
-//                 <Link href="/get-involved">
-//                   Get Involved <ArrowRight className="ml-2 h-4 w-4" />
-//                 </Link>
-//               </Button>
-//             </div>
-//           </div>
-
-//           {/* Right: Carousel */}
-//           <div className="relative h-[400px] w-full flex items-center justify-center rounded-2xl  overflow-hidden p-4">
-//             {heroImages.map((item, index) => (
-//               <div
-//                 key={index}
-//                 className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
-//                   index === currentImage ? "opacity-100 z-10" : "opacity-0 z-0"
-//                 } flex flex-col items-center justify-center`}
-//               >
-//                 <Image
-//                   src={item.src}
-//                   alt={`Hero image ${index + 1}`}
-//                   fill
-//                   className="object-contain rounded-xl"
-//                   priority={index === 0}
-//                 />
-//               </div>
-//             ))}
-
-//             {/* Controls */}
-//             <button
-//               onClick={handlePrev}
-//               className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/40 text-white p-2 rounded-full hover:bg-black/60 z-30"
-//               aria-label="Previous Image"
-//             >
-//               <ChevronLeft className="w-5 h-5" />
-//             </button>
-//             <button
-//               onClick={handleNext}
-//               className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/40 text-white p-2 rounded-full hover:bg-black/60 z-30"
-//               aria-label="Next Image"
-//             >
-//               <ChevronRight className="w-5 h-5" />
-//             </button>
-//           </div>
-//         </div>
-//       </div>
-
-//       <div className="absolute bottom-0 left-0 w-full h-16 bg-wave-pattern bg-repeat-x bg-contain"></div>
-//     </section>
-//   );
-// }
 
 function MissionSection() {
   const ref = useRef(null);

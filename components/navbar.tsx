@@ -1,11 +1,11 @@
-"use client"
+"use client";
 
-import { useState, useEffect, useRef } from "react"
-import Link from "next/link"
-import Image from "next/image"
-import { Menu, X, ChevronLeft, ChevronRight } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { cn } from "@/lib/utils"
+import { useState, useEffect, useRef } from "react";
+import Link from "next/link";
+import Image from "next/image";
+import { Menu, X, ChevronLeft, ChevronRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
 const navItems = [
   { name: "Home", href: "/" },
@@ -16,7 +16,7 @@ const navItems = [
   { name: "Partnerships", href: "/partnerships" },
   { name: "News", href: "/news" },
   { name: "Contact", href: "/contact" },
-]
+];
 
 const slides = [
   {
@@ -37,41 +37,41 @@ const slides = [
     title: "Be The Change",
     subtitle: "Join hands with Noor’s Path for a better tomorrow.",
   },
-]
+];
 
 export default function NavbarWithCarousel() {
-  const [isOpen, setIsOpen] = useState(false)
-  const [scrolled, setScrolled] = useState(false)
-  const [current, setCurrent] = useState(0)
-  const timeoutRef = useRef<any>(null)
+  const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [current, setCurrent] = useState(0);
+  const timeoutRef = useRef<any>(null);
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 10)
-    }
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
+      setScrolled(window.scrollY > 10);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   useEffect(() => {
     const nextSlide = () => {
-      setCurrent((prev) => (prev + 1) % slides.length)
-    }
-    timeoutRef.current = setTimeout(nextSlide, 8000)
-    return () => clearTimeout(timeoutRef.current)
-  }, [current])
+      setCurrent((prev) => (prev + 1) % slides.length);
+    };
+    timeoutRef.current = setTimeout(nextSlide, 8000);
+    return () => clearTimeout(timeoutRef.current);
+  }, [current]);
 
   const goToSlide = (index: number) => {
-    setCurrent(index)
-  }
+    setCurrent(index);
+  };
 
   const scrollCarousel = (direction: "left" | "right") => {
     if (direction === "left") {
-      setCurrent((prev) => (prev - 1 + slides.length) % slides.length)
+      setCurrent((prev) => (prev - 1 + slides.length) % slides.length);
     } else {
-      setCurrent((prev) => (prev + 1) % slides.length)
+      setCurrent((prev) => (prev + 1) % slides.length);
     }
-  }
+  };
 
   return (
     <>
@@ -87,22 +87,35 @@ export default function NavbarWithCarousel() {
       <header
         className={cn(
           "fixed top-[40px] left-0 right-0 z-40 transition-all duration-300",
-          scrolled ? "py-2 bg-primary-700/95 backdrop-blur-sm shadow-md" : "py-3 bg-primary-700"
+          scrolled
+            ? "py-2 bg-primary-700/95 backdrop-blur-sm shadow-md"
+            : "py-3 bg-primary-700"
         )}
       >
         <div className="container mx-auto px-4 flex items-center justify-between">
           <Link href="/" className="flex items-center">
             <div className="h-15 w-15 overflow-hidden">
-              <Image src="/logoo.png" alt="Noor's Path Logo" width={100} height={100} className="object-contain" />
+              <Image
+                src="/logoo.png"
+                alt="Noor's Path Logo"
+                width={100}
+                height={100}
+                className="object-contain"
+              />
             </div>
-            <span className="text-xl font-bold text-white">Noor&apos;s Path</span>
+            <span className="text-xl font-bold text-white">
+              Noor&apos;s Path
+            </span>
           </Link>
 
           <nav className="hidden md:flex items-center justify-center flex-1">
             <ul className="flex space-x-6">
               {navItems.slice(0, 6).map((item) => (
                 <li key={item.name}>
-                  <Link href={item.href} className="text-white/90 hover:text-white text-sm font-medium transition-colors">
+                  <Link
+                    href={item.href}
+                    className="text-white/90 hover:text-white text-sm font-medium transition-colors"
+                  >
                     {item.name}
                   </Link>
                 </li>
@@ -151,12 +164,23 @@ export default function NavbarWithCarousel() {
         {slides.map((slide, index) => (
           <div
             key={slide.id}
-            className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${index === current ? "opacity-100 z-10" : "opacity-0 z-0"}`}
+            className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+              index === current ? "opacity-100 z-10" : "opacity-0 z-0"
+            }`}
           >
-            <Image src={slide.image} alt={slide.title} layout="fill" objectFit="cover" className="z-0" />
+            <Image
+              src={slide.image}
+              alt={slide.title}
+              fill
+              className="object-cover w-full h-full z-0"
+            />
             <div className="absolute inset-0 bg-black/50 flex flex-col items-center justify-center text-white text-center p-4">
-              <h2 className="text-4xl font-bold mb-4 animate-fadeInUp">{slide.title}</h2>
-              <p className="text-lg animate-fadeInUp delay-100">{slide.subtitle}</p>
+              <h2 className="text-4xl font-bold mb-4 animate-fadeInUp">
+                {slide.title}
+              </h2>
+              <p className="text-lg animate-fadeInUp delay-100">
+                {slide.subtitle}
+              </p>
             </div>
           </div>
         ))}
@@ -184,5 +208,5 @@ export default function NavbarWithCarousel() {
         Donate Now
       </Link>
     </>
-  )
+  );
 }
