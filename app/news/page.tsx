@@ -117,7 +117,7 @@ function NewsSection() {
   )
 
   return (
-    <section ref={ref} className="py-16 md:py-24 bg-white dark:bg-gray-950">
+    (<section ref={ref} className="py-16 md:py-24 bg-white dark:bg-gray-950">
       <div className="container mx-auto px-4">
         <motion.div
           variants={{
@@ -229,8 +229,8 @@ function NewsSection() {
           </Button>
         </div>
       </div>
-    </section>
-  )
+    </section>)
+  );
 }
 
 function PressReleasesSection() {
@@ -272,7 +272,7 @@ function PressReleasesSection() {
   ]
 
   return (
-    <section ref={ref} className="py-16 md:py-24 bg-primary-50 dark:bg-gray-900">
+    (<section ref={ref} className="py-16 md:py-24 bg-primary-50 dark:bg-gray-900">
       <div className="container mx-auto px-4">
         <motion.div
           variants={{
@@ -338,8 +338,8 @@ function PressReleasesSection() {
           </Button>
         </div>
       </div>
-    </section>
-  )
+    </section>)
+  );
 }
 
 function MediaSection() {
@@ -377,7 +377,7 @@ function MediaSection() {
   ]
 
   return (
-    <section ref={ref} className="py-16 md:py-24 bg-white dark:bg-gray-950">
+    (<section ref={ref} className="py-16 md:py-24 bg-white dark:bg-gray-950">
       <div className="container mx-auto px-4">
         <motion.div
           variants={{
@@ -428,8 +428,8 @@ function MediaSection() {
           ))}
         </div>
       </div>
-    </section>
-  )
+    </section>)
+  );
 }
 
 function NewsletterSection() {
