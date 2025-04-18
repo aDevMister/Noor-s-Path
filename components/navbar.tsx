@@ -18,32 +18,10 @@ const navItems = [
   { name: "Contact", href: "/contact" },
 ];
 
-const slides = [
-  {
-    id: 1,
-    image: "/seven.jpg",
-    title: "Support Our Mission",
-    subtitle: "Bringing light to children’s lives around the world.",
-  },
-  {
-    id: 2,
-    image: "/five.jpg",
-    title: "Every Child Deserves a Future",
-    subtitle: "Help us provide healthcare, education and hope.",
-  },
-  {
-    id: 3,
-    image: "/three.jpg",
-    title: "Be The Change",
-    subtitle: "Join hands with Noor’s Path for a better tomorrow.",
-  },
-];
-
 export default function NavbarWithCarousel() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [current, setCurrent] = useState(0);
-  const timeoutRef = useRef<any>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -52,26 +30,6 @@ export default function NavbarWithCarousel() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  useEffect(() => {
-    const nextSlide = () => {
-      setCurrent((prev) => (prev + 1) % slides.length);
-    };
-    timeoutRef.current = setTimeout(nextSlide, 6000);
-    return () => clearTimeout(timeoutRef.current);
-  }, [current]);
-
-  const goToSlide = (index: number) => {
-    setCurrent(index);
-  };
-
-  const scrollCarousel = (direction: "left" | "right") => {
-    if (direction === "left") {
-      setCurrent((prev) => (prev - 1 + slides.length) % slides.length);
-    } else {
-      setCurrent((prev) => (prev + 1) % slides.length);
-    }
-  };
 
   return (
     <>
@@ -94,14 +52,16 @@ export default function NavbarWithCarousel() {
       >
         <div className="container mx-auto px-4 flex items-center justify-between">
           <Link href="/" className="flex items-center">
-            <div className="h-15 w-15 overflow-hidden">
-              <Image
-                src="/logoo.png"
-                alt="Noor's Path Logo"
-                width={100}
-                height={100}
-                className="object-contain"
-              />
+            <div >
+              <div>
+                <Image
+                  src="/logoo.png"
+                  alt="Noor's Path Logo"
+                  width={70}
+                  height={70}
+                  className="object-contain"
+                />
+              </div>
             </div>
             <span className="text-xl font-bold text-white">
               Noor&apos;s Path
@@ -142,7 +102,7 @@ export default function NavbarWithCarousel() {
         </div>
 
         {isOpen && (
-          <div className="md:hidden absolute top-full left-0 right-0 bg-primary-700 shadow-lg p-4 border-t border-primary-600 z-50 max-w-full">
+          <div className="md:hidden absolute top-full left-0 right-0 bg-primary-700 shadow-lg p-4 border-t border-primary-600 z-70 max-w-full">
             <nav className="flex flex-col space-y-3">
               {navItems.map((item) => (
                 <Link
@@ -158,50 +118,6 @@ export default function NavbarWithCarousel() {
           </div>
         )}
       </header>
-
-      {/* Hero Carousel */}
-      <section className="relative w-full overflow-hidden mt-[120px] h-[80vh]">
-        {slides.map((slide, index) => (
-          <div
-            key={slide.id}
-            className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
-              index === current ? "opacity-100 z-10" : "opacity-0 z-0"
-            }`}
-          >
-            <Image
-              src={slide.image}
-              alt={slide.title}
-              fill
-              priority={index === 0}
-              loading={index === 0 ? "eager" : "lazy"}
-              className="object-cover w-full h-full z-0"
-            />
-
-            <div className="absolute inset-0 bg-black/50 flex flex-col items-center justify-center text-white text-center p-4">
-              <h2 className="text-4xl font-bold mb-4 animate-fadeInUp">
-                {slide.title}
-              </h2>
-              <p className="text-lg animate-fadeInUp delay-100">
-                {slide.subtitle}
-              </p>
-            </div>
-          </div>
-        ))}
-
-        {/* Carousel Controls */}
-        <button
-          onClick={() => scrollCarousel("left")}
-          className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/80 text-black p-2 rounded-full shadow-lg z-20"
-        >
-          <ChevronLeft />
-        </button>
-        <button
-          onClick={() => scrollCarousel("right")}
-          className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/80 text-black p-2 rounded-full shadow-lg z-20"
-        >
-          <ChevronRight />
-        </button>
-      </section>
 
       {/* Floating Donate Button */}
       <Link
